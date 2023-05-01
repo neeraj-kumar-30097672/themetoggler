@@ -1,23 +1,26 @@
-import logo from './logo.svg';
+import { useState } from 'react';
+import CardsList from './components/CardsList';
+import Navbar from './components/Navbar';
+import data from './data/data.json'
 import './App.css';
 
 function App() {
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'white')
+
+  const handleToggle = () => {
+    if (theme === 'white') {
+      setTheme('dark')
+      localStorage.setItem('theme', 'dark')
+    } else {
+      setTheme('white')
+      localStorage.setItem('theme', 'white')
+    }
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar toggle={handleToggle} style={theme} />
+      <CardsList data={data.countries} style={theme} />
     </div>
   );
 }
