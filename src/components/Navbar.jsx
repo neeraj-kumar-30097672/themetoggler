@@ -9,7 +9,9 @@ export default function Navbar(props) {
         <p>Link 2</p>
         <p>Link 3</p>
         <p>Link 1</p>
+        <h6>Hello</h6>
         <p>Link 2</p>
+        <h6>Hello</h6>
         <p>Link 3</p>
       </div>
       <button onClick={props.toggle}>Change Theme</button>
